@@ -1,0 +1,75 @@
+/**
+ * Created by ${邹} on 2018/11/9.
+ */
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+body{
+    background-color: #caeee8;
+}
+#header{
+    height: 30px;
+}
+#header li{
+    margin: 0;
+    padding: 0;
+    width: 50%;
+}
+#left{
+    padding: 20px;
+}
+#logo{
+    width: 20%;
+    height: 20%;
+}
+#header h3{
+    margin: 0 0 0 150px;
+    font-size: 20px;
+}
+#header li{
+    float: left;
+}
+#middle{
+    margin: 0 0 0 -200px;
+}
+#right{
+    margin: 2px;
+}
+#search_box{
+    width: 300px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+}
+#search_btn{
+    height: 30px;
+    width: 80px;
+    margin: 0;
+    padding: 0;
+}
+#right{
+    margin: 0 0 0 500px;
+}
+#center{
+    clear: both;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+#center #title{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+#center #information li{
+    float: right;
+    margin: 10px;
+    padding: 20px;
+}
+.M-box{
+    clear: both;
+    text-align: center;
+}
+

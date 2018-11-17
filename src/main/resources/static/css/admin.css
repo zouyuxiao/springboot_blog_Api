@@ -1,0 +1,53 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+#header{
+    height: 10%;
+    width:100%;
+    background: #96daff;
+    margin: 0;
+    padding: 0;
+}
+#logo{
+    width: 10%;
+    height: 10%;
+    padding: 0;
+    margin: 0;
+}
+#title{
+    font-size: 25px;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+#list{
+    margin: 0 0 30px 135px;
+    font-weight: bold;
+    padding: 10px;
+}
+#list a{
+    margin: 0.5%;
+}
+#header a{
+    text-decoration: none;
+    color: #000000;
+}
+#center{
+    height: 500px;
+    width: 100%;
+}
+#center iframe{
+    width: 100%;
+    height: 100%;
+}
+#footer{
+    /*background: #c8e4ff;*/
+    width: 100%;
+    height: 10%;
+}
+#footer p{
+    margin: 0 0 0 700px;
+    color: #bfbfbf;
+}
+

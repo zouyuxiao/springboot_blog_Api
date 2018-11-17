@@ -1,0 +1,22 @@
+<table>
+            <tr>
+                <td>
+                    <a th:href="@{/api/contents/listReception?page_num=1}">首页</a>
+                </td>
+                <td th:switch="${page_num}">
+                    <p th:case="1">
+                        <a th:href="@{/api/contents/listReception?page_num=1}">上一页</a>
+                    </p> <p th:case="*">
+                    <a th:href="@{/api/contents/listReception(page_num=${page_num-1})}">上一页</a>
+                    </p>
+                </td>
+                <td th:switch="${page_num}">
+                    <p th:case="${total}">
+                        <a th:href="@{/api/contents/listReception(page_num=${total})}">下一页</a></p>
+                    <p th:case="*">
+                        <a th:href="@{/api/contents/listReception(page_num=${page_num+1})}">下一页</a>
+                    </p>
+                </td>
+                <td>
+                    <a th:href="@{/api/contents/listReception(page_num=${total})}">尾页</a>
+                </td> </tr> </table>

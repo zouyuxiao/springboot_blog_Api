@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuxiao.blog.dao.UserDao">
+    <resultMap id="userResultMap" type="com.yuxiao.blog.bean.User">
+        <id column="u_id" property="uId"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="sex" property="sex"/>
+        <result column="email" property="email"/>
+        <result column="phone" property="phone"/>
+        <result column="status" property="status"/>
+        <result column="img" property="img"/>
+    </resultMap>
+    <insert id="reg">
+        INSERT INTO user(username,password,sex,email,phone,status,img)
+        VALUES (#{username},#{password},#{sex},#{email},#{phone},#{status},#{img})
+    </insert>
+    <delete id="deleteById">
+        DELETE FROM user WHERE u_id=#{id}
+    </delete>
+    <select id="selectByUsername" resultType="com.yuxiao.blog.bean.User" resultMap="userResultMap">
+        SELECT username FROM user WHERE username=#{username}
+    </select>
+    <select id="selectByEmail" resultType="com.yuxiao.blog.bean.User" resultMap="userResultMap">
+        SELECT email FROM user WHERE email=#{email}
+    </select>
+    <select id="selectByPhone" resultType="com.yuxiao.blog.bean.User" resultMap="userResultMap">
+        SELECT phone FROM user WHERE phone=#{phone}
+    </select>
+    <select id="login" resultType="com.yuxiao.blog.bean.User" resultMap="userResultMap">
+        SELECT * FROM user WHERE username=#{username} AND password=#{password}
+    </select>
+    <select id="list" resultType="com.yuxiao.blog.bean.User" resultMap="userResultMap">
+        SELECT * FROM user
+    </select>
+    <select id="select" resultType="com.yuxiao.blog.bean.User" resultMap="userResultMap">
+        SELECT * FROM user
+    </select>
+    <select id="selectUsername" resultType="com.yuxiao.blog.bean.User" resultMap="userResultMap">
+        SELECT * FROM user WHERE username LIKE "%"#{username}"%"
+    </select>
+    <select id="selectById" resultType="com.yuxiao.blog.bean.User" resultMap="userResultMap">
+        SELECT * FROM user WHERE u_id=#{id}
+    </select>
+    <select id="findByUsername" resultType="com.yuxiao.blog.bean.User" resultMap="userResultMap">
+        SELECT * FROM user WHERE username=#{username}
+    </select>
+    <select id="findById" resultType="com.yuxiao.blog.bean.User" resultMap="userResultMap">
+        SELECT * FROM user WHERE u_id=#{id}
+    </select>
+    <update id="update">
+        UPDATE user SET username=#{username},password=#{password},sex=#{sex},
+        email=#{email},phone=#{phone},status=#{status},img=#{img} WHERE u_id=#{uId}
+    </update>
+</mapper>

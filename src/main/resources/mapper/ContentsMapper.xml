@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuxiao.blog.dao.ContentsDao">
+    <resultMap id="contentResultMap" type="com.yuxiao.blog.bean.Contents">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="u_id" property="uId"/>
+        <result column="time" property="time"/>
+        <result column="status" property="status"/>
+        <result column="title" property="title"/>
+        <result column="c_id" property="cId"/>
+        <result column="comment_id" property="commentId"/>
+        <collection property="users" column="u_id" select="com.yuxiao.blog.dao.UserDao.selectById"></collection>
+        <collection property="comments" column="comment_id" select="com.yuxiao.blog.dao.CommentDao.selectById"></collection>
+        <collection property="categories" column="c_id" select="com.yuxiao.blog.dao.CategoryDao.selectById"></collection>
+    </resultMap>
+    <resultMap id="commentRusultMap" type="com.yuxiao.blog.bean.Comment">
+        <id column="id" property="id"/>
+        <result column="content" property="content"/>
+        <result column="time" property="time"/>
+        <result column="u_id" property="uId"/>
+        <result column="content_id" property="contentId"/>
+        <collection property="contents" column="content_id" select="com.yuxiao.blog.dao.ContentsDao.selectById"></collection>
+        <collection property="users" column="u_id" select="com.yuxiao.blog.dao.UserDao.selectById"></collection>
+    </resultMap>
+    <select id="list" resultMap="contentResultMap" resultType="com.yuxiao.blog.bean.Contents">
+        SELECT * FROM contents
+    </select>
+    <select id="selectByTitle" resultMap="contentResultMap" resultType="com.yuxiao.blog.bean.Contents">
+        SELECT * FROM contents WHERE title LIKE "%"#{title}"%"
+    </select>
+    <select id="selectByStatus" resultMap="contentResultMap" resultType="com.yuxiao.blog.bean.Contents">
+        SELECT * FROM contents WHERE status=#{status}
+    </select>
+    <select id="selectById" resultMap="contentResultMap" resultType="com.yuxiao.blog.bean.Contents">
+        SELECT * FROM contents WHERE id=#{id}
+    </select>
+    <insert id="add">
+        INSERT INTO contents(title,content,u_id,time,status,c_id,comment_id)
+        VALUES (#{title},#{content},#{uId},#{time},#{status},#{cId},#{commentId})
+    </insert>
+    <delete id="delete">
+        DELETE FROM contents WHERE id=#{id}
+    </delete>
+    <update id="update">
+        UPDATE contents SET title=#{title},content=#{content},u_id=#{uId},time=#{time},status=#{status},c_id=#{cId},comment_id=#{commentId}}
+        WHERE id=#{id}
+    </update>
+    <update id="updateStatus">
+        UPDATE contents SET status=#{status}
+        WHERE  id=#{id}
+    </update>
+    <select id="selectByContentId" resultMap="commentRusultMap" resultType="com.yuxiao.blog.bean.Comment">
+        SELECT * FROM comment WHERE content_id=#{id}
+    </select>
+</mapper>

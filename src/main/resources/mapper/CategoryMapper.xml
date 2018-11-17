@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuxiao.blog.dao.CategoryDao">
+    <resultMap id="CategoryResultMap" type="com.yuxiao.blog.bean.Category">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+    <select id="list" resultMap="CategoryResultMap" resultType="com.yuxiao.blog.bean.Category">
+        SELECT * FROM category
+    </select>
+    <select id="selectById" resultMap="CategoryResultMap" resultType="com.yuxiao.blog.bean.Category">
+        SELECT * FROM category WHERE id=#{id}
+    </select>
+    <select id="listByName" resultMap="CategoryResultMap" resultType="com.yuxiao.blog.bean.Category">
+        SELECT * FROM category WHERE name LIKE "%"#{name}"%"
+    </select>
+    <select id="selectName" resultMap="CategoryResultMap" resultType="com.yuxiao.blog.bean.Category">
+        SELECT name FROM category WHERE name=#{name}
+    </select>
+    <insert id="add">
+        INSERT INTO category(name) VALUES (#{name})
+    </insert>
+    <delete id="delete">
+        DELETE FROM category WHERE id=#{id}
+    </delete>
+    <update id="update">
+        UPDATE category SET name=#{name} WHERE id=#{id}
+    </update>
+</mapper>

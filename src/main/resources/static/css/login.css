@@ -1,0 +1,31 @@
+/**
+ * Created by ${邹} on 2018/11/6.
+ */
+body{
+    margin: 0;
+    padding: 0;
+    background: #c8e4ff;
+}
+#header{
+    height: 150px;
+}
+#form1 td{
+    padding: 20px;
+    margin: 30px;
+    font-size: 30px;
+ }
+.input{
+    width: 300px;
+    height: 50px;
+    border: 2px;
+    font-size: 20px;
+}
+#btn{
+    width: 100px;
+    height: 40px;
+    background: #7cafff;
+    border: 1px;
+}
+#form1 label,a{
+    font-size: 20px;
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuxiao.blog.dao.CommentDao">
+    <resultMap id="commentRusultMap" type="com.yuxiao.blog.bean.Comment">
+        <id column="id" property="id"/>
+        <result column="content" property="content"/>
+        <result column="time" property="time"/>
+        <result column="u_id" property="uId"/>
+        <result column="reply_id" property="replyId"/>
+        <collection property="users" column="u_id" select="com.yuxiao.blog.dao.UserDao.selectById"></collection>
+        <collection property="replies" column="reply_id" select="com.yuxiao.blog.dao.ReplyDao.selectById"></collection>
+    </resultMap>
+    <select id="list" resultMap="commentRusultMap" resultType="com.yuxiao.blog.bean.Comment">
+        SELECT * FROM comment
+    </select>
+    <select id="selectById" resultMap="commentRusultMap" resultType="com.yuxiao.blog.bean.Comment">
+        SELECT * FROM comment WHERE id=#{id}
+    </select>
+    <insert id="add">
+        INSERT INTO comment(content,time,u_id,content_id)
+        VALUES (#{content},#{time},#{uId},#{contentId})
+    </insert>
+    <update id="update">
+        UPDATE comment SET content=#{content},time=#{time},u_id=#{uId},content_id=#{contentId}
+    </update>
+    <delete id="delete">
+        DELETE FROM comment WHERE id=#{id}
+    </delete>
+</mapper>

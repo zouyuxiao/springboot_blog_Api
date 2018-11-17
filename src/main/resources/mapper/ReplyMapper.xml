@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuxiao.blog.dao.ReplyDao">
+    <resultMap id="replyResultMap" type="com.yuxiao.blog.bean.Reply">
+        <id column="id" property="id"/>
+        <result column="u_id" property="uId"/>
+        <result column="content" property="content"/>
+        <collection property="users" column="u_id" select="com.yuxiao.blog.dao.UserDao.selectById"></collection>
+    </resultMap>
+    <select id="list" resultMap="replyResultMap" resultType="com.yuxiao.blog.bean.Reply">
+        SELECT * FROM comment_reply
+    </select>
+    <select id="selectById" resultMap="replyResultMap" resultType="com.yuxiao.blog.bean.Reply">
+        SELECT * FROM comment_reply WHERE id=#{id}
+    </select>
+    <delete id="delete">
+        DELETE FROM comment_reply WHERE id=#{id}
+    </delete>
+    <insert id="add">
+        INSERT INTO comment_reply(u_id,comment_id,content)
+        VALUES (#{uId},#{commentId},#{content})
+    </insert>
+</mapper>
